@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - 44443:6379
+    restart: always
+    volumes:
+      - ./data:/data
+      - ./config/redis.conf:/etc/redis/redis.conf:ro
+    privileged: true
+    command: redis-server --requirepass 7GhVu9i24mjK

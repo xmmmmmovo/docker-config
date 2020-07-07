@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    image: richardchien/cqhttp:latest
+    container_name: cqhttp-coolq
+    restart: always
+    environment:
+        - COOLQ_ACCOUNT=  # 要登录的 QQ 账号，可选但建议填
+        - VNC_PASSWD=
+        - CQHTTP_POST_URL=  # 事件上报地址
+        - CQHTTP_SERVE_DATA_FILES=yes # 允许通过 HTTP 接口访问 酷Q 数据文件
+    ports:
+      - 9000:9000
+      - 5700:5700
+    volumes:
+        - $(pwd)/coolq:/home/user/coolq # 挂载coolq
